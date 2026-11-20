@@ -1,0 +1,21 @@
+name: 'README Validator'
+description: 'Validate README quality and generate a health score badge'
+inputs:
+  repo:
+    description: 'Repository to validate (format: owner/repo)'
+    required: false
+    default: ''
+  threshold:
+    description: 'Minimum score to pass (0-10)'
+    required: false
+    default: '6'
+outputs:
+  score:
+    description: 'Numerical score (0-10)'
+    value: ${{ steps.validator.outputs.score }}
+  badge_svg:
+    description: 'Markdown-ready badge SVG code'
+    value: ${{ steps.validator.outputs.badge_svg }}
+runs:
+  using: 'node20'
+  main: 'entrypoint.sh'

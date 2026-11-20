@@ -1,0 +1,16 @@
+name: README Validator
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: readme-val/readme-validator@v1
+        with:
+          repo: ${{ github.repository }}
+          threshold: 7
